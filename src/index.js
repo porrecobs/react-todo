@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const DEFAULT_DATA = [
+  { id: "todo-0", name: "comer", completed: true },
+  { id: "todo-1", name: "rezar", completed: false },
+  { id: "todo-2", name: "amar", completed: false }
+]
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App tasks={DEFAULT_DATA} />,
   document.getElementById('root')
 );
 
