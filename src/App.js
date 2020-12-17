@@ -17,14 +17,37 @@ function App(props) {
       name={task.name}
       completed={task.completed}
       key={task.id}
+      toggleTaskCompleted={toggleTaskCompleted}
+      deleteTask={deleteTask}
+      editTask={editTask}
     />
   ));
+
   const tasksNoun = taskList !== 1 ? "tarefas" : "tarefa";
   const headingText = `${taskList.length} ${tasksNoun} restando`;
 
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
+  }
+
+  function toggleTaskCompleted(id) {
+    const updateTasks = tasks.map((task) => {
+      return id === task.id ? { ...task, completed: !task.completed } : task;
+    });
+    setTasks(updateTasks);
+  }
+
+  function deleteTask(id) {
+    const remainingTasks = tasks.filter((task) => id !== task.id);
+    setTasks(remainingTasks);
+  }
+
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map((task) => {
+      return id === task.id ? { ...task, name: newName } : task;
+    });
+    setTasks(editedTaskList);
   }
 
   return (
