@@ -18,7 +18,7 @@ executa os testes (ainda não implementados, eu sei, eu sei, TDD é bem importan
 
 ### `npm run build`
 
-execura o build do projeto para produção :star2:
+executa o build do projeto para produção :star2:
 
 
 [mozilla]: https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_todo_list_beginning
