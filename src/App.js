@@ -8,8 +8,8 @@ function App(props) {
     <Todo id={task.id} name={task.name} completed={task.completed} key={task.id}/>));
   return (
     <div className="todo-app">
-      <h1>2Do</h1>
-      <Form />
+      <h1>2-Do</h1>
+      <Form addTask={addTask}/>
       <div className="filters btn-group">
         <FilterButton />
         <FilterButton />
@@ -22,6 +22,12 @@ function App(props) {
         {taskList}
       </ul>
     </div>
+  );
+}
+
+function addTask(name) {
+  super.taskList.push(
+    <Todo id={task.id} name={task.name} completed={task.completed} key={task.id}/>
   );
 }
 
