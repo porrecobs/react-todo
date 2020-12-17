@@ -29,7 +29,11 @@ export default function Todo(props) {
         />
       </div>
       <div className="btn-group">
-        <button type="button" className="btn todo-cancel">
+        <button
+          type="button"
+          className="btn todo-cancel"
+          onClick={() => setEditing(false)}
+        >
           cancelar
           <span className="visually-hidden">renomeação de {props.name}</span>
         </button>
