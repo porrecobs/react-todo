@@ -2,8 +2,47 @@ import React, { useState } from "react";
 
 export default function Todo(props) {
   const [isEditing, setEditing] = useState(false);
-  return (
-    <li className="todo stack-small">
+  const [newName, setNewName] = useState("");
+
+  function handleChange(e) {
+    setNewName(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.editTask(props.id, newName);
+    setNewName("");
+    setEditing(false);
+  }
+
+  const editingTemplate = (
+    <form className="stack-small" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label className="todo-label" htmlFor={props.id}>
+          novo nome para "{props.name}"
+        </label>
+        <input
+          id={props.id}
+          className="todo-text"
+          type="text"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="btn-group">
+        <button type="button" className="btn todo-cancel">
+          cancelar
+          <span className="visually-hidden">renomeação de {props.name}</span>
+        </button>
+        <button type="submit" className="btn btn_primary todo-edit">
+          salvar
+          <span className="visually-hidden">novo nome para {props.name}</span>
+        </button>
+      </div>
+    </form>
+  );
+
+  const viewTemplate = (
+    <div className="stack-small">
       <div className="c-cb">
         <input
           id={props.id}
@@ -16,18 +55,24 @@ export default function Todo(props) {
         </label>
       </div>
       <div className="btn-group">
-        <button type="button" className="btn">
-          editar <span className="visually-hidden">{props.name}</span>
+        <button type="button" className="btn" onClick={() => setEditing(true)}>
+          editar
+          <span className="visually-hidden">{props.name}</span>
         </button>
-
         <button
           type="button"
           className="btn btn_danger"
           onClick={() => props.deleteTask(props.id)}
         >
-          deletar <span className="visually-hidden">{props.name}</span>
+          excluir <span className="visually-hidden">{props.name}</span>
         </button>
       </div>
+    </div>
+  );
+
+  return (
+    <li className="todo">
+      {isEditing === true ? editingTemplate : viewTemplate}
     </li>
   );
 }
