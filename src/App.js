@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
+
 import Todo from "./components/Todo";
 import Form from "./components/Form";
-import "./App.css";
 import FilterButton from "./components/FilterButton";
+
+import "./App.css";
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
@@ -16,9 +19,11 @@ function App(props) {
       key={task.id}
     />
   ));
+  const tasksNoun = taskList !== 1 ? "tarefas" : "tarefa";
+  const headingText = `${taskList.length} ${tasksNoun} restando`;
 
   function addTask(name) {
-    const newTask = { id: "id", name: name, completed: false };
+    const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
   }
 
@@ -31,7 +36,7 @@ function App(props) {
         <FilterButton />
         <FilterButton />
       </div>
-      <h2 id="list-heading">3 tarefas restantes</h2>
+      <h2 id="list-heading">{headingText}</h2>
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
