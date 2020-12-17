@@ -8,8 +8,21 @@ import FilterButton from "./components/FilterButton";
 
 import "./App.css";
 
+const FILTER_MAP = {
+  todas: () => true,
+  ativas: (task) => !task.completed,
+  concluídas: (task) => task.completed,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState("all");
+
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton key={name} name={name} />
+  ));
 
   const taskList = tasks.map((task) => (
     <Todo
@@ -54,11 +67,7 @@ function App(props) {
     <div className="todo-app">
       <h1>2-Do</h1>
       <Form addTask={addTask} />
-      <div className="filters btn-group">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
-      </div>
+      <div className="filters btn-group">{filterList}</div>
       <h2 id="list-heading">{headingText}</h2>
       <ul
         role="list"
