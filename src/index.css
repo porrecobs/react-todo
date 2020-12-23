@@ -63,7 +63,7 @@ body {
   width: 100%;
   max-width: 68rem;
   margin: 0 auto;
-  padding: 5px;
+  padding: 0px;
   font: 1.6rem/1.25 Arial, sans-serif;
   background-color: #fff;
   color: #4d4d4d;
@@ -93,7 +93,7 @@ body {
 }
 .btn.toggle-btn:focus { outline: none; }
 .btn.toggle-btn[aria-pressed="true"] {
-  text-decoration: underline;
+  font-weight: 600;
   background-color: #435294;
   color: #fff;
 }
@@ -159,14 +159,15 @@ body {
 /* END GLOBAL STYLES */
 .todo-app {
   background: #faf3ef;
-  margin: 2rem 0 4rem 0;
-  padding: 1rem;
+  margin: 0 0 4rem 0;
+  padding: 0 1rem 1rem 1rem;
   position: relative;
   border-radius: 5pt;
 }
 @media screen and (min-width: 550px) {
   .todo-app {
     padding: 4rem;
+    
   }
 }
 
