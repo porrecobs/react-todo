@@ -71,18 +71,23 @@ function App(props) {
   }
 
   return (
-    <div className="todo-app">
-      <h1>2-Do</h1>
-      <Form addTask={addTask} />
-      <div className="filters btn-group">{filterList}</div>
-      <h2 id="list-heading">{headingText}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
-        {taskList}
-      </ul>
+    <div>
+      <div className="container-header">
+        <img className="image-header" src="./support-team.png" alt="" />
+      </div>
+      <div className="todo-app">
+        <h1>2-Do</h1>
+        <Form addTask={addTask} />
+        <div className="filters btn-group">{filterList}</div>
+        <h2 id="list-heading">{headingText}</h2>
+        <ul
+          role="list"
+          className="todo-list stack-large stack-exception"
+          aria-labelledby="list-heading"
+        >
+          {taskList}
+        </ul>
+      </div>
     </div>
   );
 }
